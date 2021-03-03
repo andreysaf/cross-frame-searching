@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset=utf-8>
+  <title>Cross-Origin Search</title>
+</head>
+<body>
+    <input type='text' id='searchTerm'></input>
+    <button id='searchButton'>Search</button>
+    <iframe src='http://localhost:9000/pages/page1.html' id='iframe1'></iframe>
+    <iframe src='http://localhost:9000/pages/page2.html' id='iframe2'></iframe>
+    <script>
+
+        window.addEventListener('message', function (event) {
+            //   if (event.origin != 'http://javascript.info') {
+            //     // something from an unknown domain, let's ignore it
+            //     return;
+            //   }        
+              alert(`iframe: ${event.data.name} found the search term ${event.data.search}`);
+            });
+            
+
+        document.getElementById('searchButton').addEventListener('click', () => {
+            // loop over each iframe and post a message
+            const iframes = document.querySelectorAll('iframe');
+            const searchTerm = document.getElementById('searchTerm').value;
+            iframes.forEach((frame) => {
+                frame.contentWindow.postMessage(searchTerm, '*');
+            });
+        });
+
+    </script>
+</body>
+</html>
