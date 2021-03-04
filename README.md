@@ -3,6 +3,8 @@ Search cross-origin frames from parent element. If the iframes are embedded from
 
 ![demonstration](https://github.com/andreysaf/cross-frame-searching/blob/main/search.gif)
 
+:warning: **Ensure you are only accepting messages from the trusted event.origin**: This sample only meant to work with localhost. [Learn More](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#security_concerns).
+
 ## Install
 
 #### Client
